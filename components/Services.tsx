@@ -5,27 +5,27 @@ import { ServiceItem } from '../types';
 const services: ServiceItem[] = [
   {
     id: '01',
-    title: 'Cognitive Infrastructure',
-    description: 'Agentic Systems, RAG Pipelines, Custom LLMs',
-    image: 'https://picsum.photos/seed/tech1/600/400'
+    title: 'AI Agents & Automations',
+    description: '24/7 autonomous systems that handle customer queries, qualify leads, and automate workflows—saving 80+ hours monthly',
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop&q=80'
   },
   {
     id: '02',
-    title: 'Hyper-Performance Web',
-    description: 'Rust/Python Backends, Next.js, High-Speed Automation',
-    image: 'https://picsum.photos/seed/arch/600/400'
+    title: 'Landing Pages & Websites',
+    description: 'High-converting web experiences with minimal backend—optimized for speed, SEO, and client acquisition',
+    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80'
   },
   {
     id: '03',
-    title: 'Generative Aesthetics',
-    description: 'AI Ad Campaigns, Figma Mockups, Motion Design',
-    image: 'https://picsum.photos/seed/art/600/400'
+    title: 'AI Marketing Campaigns',
+    description: 'AI-generated ad copy, campaign strategies, and content that performs—scaling your brand at AI speed',
+    image: 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&h=400&fit=crop&q=80'
   },
   {
     id: '04',
-    title: 'The Academy',
-    description: 'MasterSessions, Bootcamps, Mentorship',
-    image: 'https://picsum.photos/seed/edu/600/400'
+    title: 'AI Visual Design',
+    description: 'Product photography, promotional videos, and brand visuals created in hours, not weeks—with AI precision',
+    image: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=600&h=400&fit=crop&q=80'
   }
 ];
 
@@ -48,18 +48,18 @@ const Services: React.FC = () => {
   };
 
   return (
-    <section 
+    <section
       ref={containerRef}
       onMouseMove={handleMouseMove}
       className="relative w-full py-24 px-6 md:px-12 bg-charcoal overflow-hidden cursor-crosshair"
     >
-       <div className="mb-16 md:mb-24">
-         <span className="text-muted text-xs tracking-[0.2em] font-sans uppercase">Capabilities</span>
-       </div>
+      <div className="mb-16 md:mb-24">
+        <span className="text-muted text-xs tracking-[0.2em] font-sans uppercase">Capabilities</span>
+      </div>
 
       <div className="flex flex-col">
         {services.map((service) => (
-          <div 
+          <div
             key={service.id}
             onMouseEnter={() => setActiveId(service.id)}
             onMouseLeave={() => setActiveId(null)}
@@ -86,8 +86,8 @@ const Services: React.FC = () => {
         {activeId && activeService && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ 
-              opacity: 1, 
+            animate={{
+              opacity: 1,
               scale: 1,
               x: mousePosition.x + 20, // Offset from cursor
               y: mousePosition.y - 150
@@ -95,17 +95,17 @@ const Services: React.FC = () => {
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
             className="pointer-events-none fixed top-0 left-0 z-20 hidden md:block w-[400px] h-[250px] overflow-hidden rounded-sm shadow-2xl"
-            style={{ 
-                // Using fixed positioning calculated from mouse relative to container
-                left: 0,
-                top: 0,
-                x: mousePosition.x + (containerRef.current?.getBoundingClientRect().left || 0) + 40,
-                y: mousePosition.y + (containerRef.current?.getBoundingClientRect().top || 0) - 125,
+            style={{
+              // Using fixed positioning calculated from mouse relative to container
+              left: 0,
+              top: 0,
+              x: mousePosition.x + (containerRef.current?.getBoundingClientRect().left || 0) + 40,
+              y: mousePosition.y + (containerRef.current?.getBoundingClientRect().top || 0) - 125,
             }}
           >
-            <img 
-              src={activeService.image} 
-              alt={activeService.title} 
+            <img
+              src={activeService.image}
+              alt={activeService.title}
               className="w-full h-full object-cover grayscale contrast-125 brightness-90"
             />
             <div className="absolute inset-0 bg-champagne/10 mix-blend-overlay"></div>
