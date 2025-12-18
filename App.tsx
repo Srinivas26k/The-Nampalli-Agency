@@ -8,6 +8,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
 import CursorGlow from './components/CursorGlow';
+import { Analytics } from "@vercel/analytics/next"
 
 const App: React.FC = () => {
   return (
@@ -29,9 +30,8 @@ const App: React.FC = () => {
       <TechStack />
 
       <ContactForm />
-
       <Footer />
-
+      <Analytics/>
     </main>
   );
 };
