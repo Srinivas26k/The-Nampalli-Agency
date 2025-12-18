@@ -4,6 +4,7 @@ import Introduction from './components/Introduction';
 import Services from './components/Services';
 import WorkGallery from './components/WorkGallery';
 import TechStack from './components/TechStack';
+import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
 import CursorGlow from './components/CursorGlow';
@@ -26,6 +27,8 @@ const App: React.FC = () => {
       <WorkGallery />
 
       <TechStack />
+
+      <ContactForm />
 
       <Footer />
 

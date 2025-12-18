@@ -61,13 +61,13 @@ const Footer: React.FC = () => {
         </motion.div>
 
         <motion.a
-          href="mailto:contact@nampalli.agency"
+          href="mailto:srinivasvarma764[at]gmail[dot]com"
           className="group relative inline-block"
           whileHover={{ scale: 1.05 }}
           transition={{ type: "spring", stiffness: 300, damping: 10 }}
         >
-          <span className="font-serif text-[10vw] md:text-[8vw] leading-none text-offwhite group-hover:text-champagne transition-colors duration-500">
-            contact@nampalli.agency
+          <span className="font-serif text-[5vw] md:text-[6vw] leading-none text-offwhite group-hover:text-champagne transition-colors duration-500">
+            srinivasvarma764[at]gmail[dot]com
           </span>
           <motion.div
             className="h-[1px] w-0 bg-champagne absolute bottom-4 left-0"
