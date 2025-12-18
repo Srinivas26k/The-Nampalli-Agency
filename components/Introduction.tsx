@@ -29,7 +29,7 @@ const Introduction: React.FC = () => {
           className="relative w-full max-w-md aspect-square overflow-hidden rounded-sm group"
         >
           <img
-            src="/assets/Thub.jpeg"
+            src="/Thub.jpeg"
             alt="Srinivas Nampalli"
             className="w-full h-full object-cover grayscale brightness-90 contrast-110 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-100 transition-all duration-700 ease-out"
           />
