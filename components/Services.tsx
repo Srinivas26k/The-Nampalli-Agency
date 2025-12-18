@@ -17,12 +17,18 @@ const services: ServiceItem[] = [
   },
   {
     id: '03',
+    title: 'Rapid MVP Prototyping',
+    description: 'Transform your idea into a working prototype in days, not months—validate fast, iterate faster, launch with confidence',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80'
+  },
+  {
+    id: '04',
     title: 'AI Marketing Campaigns',
     description: 'AI-generated ad copy, campaign strategies, and content that performs—scaling your brand at AI speed',
     image: 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&h=400&fit=crop&q=80'
   },
   {
-    id: '04',
+    id: '05',
     title: 'AI Visual Design',
     description: 'Product photography, promotional videos, and brand visuals created in hours, not weeks—with AI precision',
     image: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=600&h=400&fit=crop&q=80'
