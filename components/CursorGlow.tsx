@@ -3,38 +3,58 @@ import React, { useEffect, useState } from 'react';
 const CursorGlow: React.FC = () => {
     const [position, setPosition] = useState({ x: 0, y: 0 });
     const [isVisible, setIsVisible] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
+        // Check if device is mobile/tablet
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024 || 'ontouchstart' in window);
+        };
+
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+
         const handleMouseMove = (e: MouseEvent) => {
-            setPosition({ x: e.clientX, y: e.clientY });
-            setIsVisible(true);
+            if (!isMobile) {
+                setPosition({ x: e.clientX, y: e.clientY });
+                setIsVisible(true);
+            }
         };
 
         const handleMouseLeave = () => {
             setIsVisible(false);
         };
 
-        window.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener('mouseleave', handleMouseLeave);
+        if (!isMobile) {
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseleave', handleMouseLeave);
+        }
 
         return () => {
-            window.removeEventListener('mousemove', handleMouseMove);
+            document.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener('mouseleave', handleMouseLeave);
+            window.removeEventListener('resize', checkMobile);
         };
-    }, []);
+    }, [isMobile]);
 
-    if (!isVisible) return null;
+    // Don't render on mobile
+    if (isMobile) return null;
 
     return (
         <div
-            className="fixed pointer-events-none z-50 mix-blend-screen"
-            style={{
-                left: position.x,
-                top: position.y,
-                transform: 'translate(-50%, -50%)',
-            }}
+            className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-300"
+            style={{ opacity: isVisible ? 1 : 0 }}
         >
-            <div className="w-96 h-96 bg-champagne/5 rounded-full blur-3xl" />
+            <div
+                className="absolute w-96 h-96 rounded-full"
+                style={{
+                    left: position.x - 192,
+                    top: position.y - 192,
+                    background: 'radial-gradient(circle, rgba(247, 231, 206, 0.15) 0%, transparent 70%)',
+                    filter: 'blur(40px)',
+                    mixBlendMode: 'screen',
+                }}
+            />
         </div>
     );
 };

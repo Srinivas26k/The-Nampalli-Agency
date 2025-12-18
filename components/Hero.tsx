@@ -37,6 +37,8 @@ const Hero: React.FC = () => {
   const springY = useSpring(0, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.innerWidth < 768) return; // Disable magnetic effect on mobile
+
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current!.getBoundingClientRect();
     const centerX = left + width / 2;
@@ -56,13 +58,13 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="h-screen w-full flex flex-col justify-between px-6 py-8 md:px-12 md:py-12 relative overflow-hidden">
+    <section className="min-h-screen w-full flex flex-col justify-between px-4 sm:px-6 py-6 sm:py-8 md:px-12 md:py-12 relative overflow-hidden">
       {/* Top Label */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1.5 }}
-        className="flex justify-between items-start text-muted text-xs md:text-sm tracking-[0.2em] font-sans uppercase"
+        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 text-muted text-[10px] sm:text-xs md:text-sm tracking-[0.15em] sm:tracking-[0.2em] font-sans uppercase"
       >
         <span>Est. 2025 // Hyderabad</span>
         <span>The Nampalli Agency</span>
@@ -80,7 +82,7 @@ const Hero: React.FC = () => {
         <div className="overflow-hidden">
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-[18vw] leading-[0.85] text-center font-normal tracking-tight bg-gradient-to-r from-offwhite via-champagne to-offwhite bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient"
+            className="font-serif text-[16vw] sm:text-[15vw] md:text-[14vw] lg:text-[12vw] xl:text-[10vw] leading-[0.85] text-center font-normal tracking-tight bg-gradient-to-r from-offwhite via-champagne to-offwhite bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient"
           >
             Digital
           </motion.h1>
@@ -90,7 +92,7 @@ const Hero: React.FC = () => {
         <div className="overflow-hidden">
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-[18vw] leading-[0.85] text-center font-light italic tracking-tight bg-gradient-to-r from-champagne via-offwhite to-champagne bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient"
+            className="font-serif text-[16vw] sm:text-[15vw] md:text-[14vw] lg:text-[12vw] xl:text-[10vw] leading-[0.85] text-center font-light italic tracking-tight bg-gradient-to-r from-champagne via-offwhite to-champagne bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient"
           >
             Alchemy.
           </motion.h1>
@@ -98,13 +100,13 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Sub-headline & Scroll Indicator */}
-      <div className="flex flex-col items-center space-y-12 pb-8">
+      <div className="flex flex-col items-center space-y-8 sm:space-y-12 pb-6 sm:pb-8">
         <motion.div style={{ y: ySubheadline }}>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.8 }}
-            className="text-muted text-sm md:text-lg font-sans tracking-wide text-center max-w-md"
+            className="text-muted text-xs sm:text-sm md:text-base lg:text-lg font-sans tracking-wide text-center max-w-xs sm:max-w-md px-4"
           >
             Merging <span className="text-offwhite">Agentic AI</span> with <span className="text-offwhite">Visceral Design</span>.
           </motion.p>
@@ -115,14 +117,14 @@ const Hero: React.FC = () => {
           ref={ref}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          className="p-10 -m-10 cursor-pointer" // Padding creates the "magnetic field" area
+          className="p-8 sm:p-10 -m-8 sm:-m-10 cursor-pointer"
         >
           <motion.div
             style={{ x: springX, y: springY }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.6 }}
             transition={{ duration: 1, delay: 2.2 }}
-            className="h-16 w-[1px] bg-muted/30 overflow-hidden relative"
+            className="h-12 sm:h-16 w-[1px] bg-muted/30 overflow-hidden relative"
           >
             <motion.div
               animate={{ y: ["-100%", "100%"] }}

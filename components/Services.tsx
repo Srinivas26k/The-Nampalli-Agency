@@ -37,25 +37,31 @@ const services: ServiceItem[] = [
 
 const Services: React.FC = () => {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [mouseX, setMouseX] = useState(0);
+  const [activeRowBounds, setActiveRowBounds] = useState<DOMRect | null>(null);
+  const rowRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   const activeService = services.find(s => s.id === activeId);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    // Calculate relative position within the container
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      setMousePosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top
-      });
+    setMouseX(e.clientX);
+  };
+
+  const handleServiceEnter = (serviceId: string) => {
+    setActiveId(serviceId);
+    const rowElement = rowRefs.current[serviceId];
+    if (rowElement) {
+      setActiveRowBounds(rowElement.getBoundingClientRect());
     }
+  };
+
+  const handleServiceLeave = () => {
+    setActiveId(null);
+    setActiveRowBounds(null);
   };
 
   return (
     <section
-      ref={containerRef}
       onMouseMove={handleMouseMove}
       className="relative w-full py-24 px-6 md:px-12 bg-charcoal overflow-hidden cursor-crosshair"
     >
@@ -67,8 +73,9 @@ const Services: React.FC = () => {
         {services.map((service) => (
           <div
             key={service.id}
-            onMouseEnter={() => setActiveId(service.id)}
-            onMouseLeave={() => setActiveId(null)}
+            ref={(el) => rowRefs.current[service.id] = el}
+            onMouseEnter={() => handleServiceEnter(service.id)}
+            onMouseLeave={handleServiceLeave}
             className="group relative border-t border-muted/20 py-12 md:py-16 transition-all duration-500 ease-out hover:bg-white/5"
           >
             <div className="flex flex-col md:flex-row md:items-baseline justify-between z-10 relative">
@@ -87,27 +94,39 @@ const Services: React.FC = () => {
         <div className="border-t border-muted/20"></div>
       </div>
 
-      {/* Floating Image Portal */}
+      {/* Floating Image - Locked to Row */}
       <AnimatePresence>
-        {activeId && activeService && (
+        {activeId && activeService && activeRowBounds && (
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{
               opacity: 1,
               scale: 1,
-              x: mousePosition.x + 20, // Offset from cursor
-              y: mousePosition.y - 150
             }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="pointer-events-none fixed top-0 left-0 z-20 hidden md:block w-[400px] h-[250px] overflow-hidden rounded-sm shadow-2xl"
-            style={{
-              // Using fixed positioning calculated from mouse relative to container
-              left: 0,
-              top: 0,
-              x: mousePosition.x + (containerRef.current?.getBoundingClientRect().left || 0) + 40,
-              y: mousePosition.y + (containerRef.current?.getBoundingClientRect().top || 0) - 125,
-            }}
+            className="pointer-events-none fixed z-20 hidden md:block w-[400px] h-[250px] overflow-hidden rounded-sm shadow-2xl"
+            style={(() => {
+              // X position follows cursor horizontally
+              let xPos = mouseX + 40;
+
+              // Keep image on screen horizontally
+              if (xPos + 400 > window.innerWidth - 20) {
+                xPos = mouseX - 440; // Show on left side of cursor instead
+              }
+              if (xPos < 20) {
+                xPos = 20;
+              }
+
+              // Y position LOCKED to vertical center of the active row
+              const rowCenterY = activeRowBounds.top + (activeRowBounds.height / 2);
+              const yPos = rowCenterY - 125; // Center the 250px tall image
+
+              return {
+                left: `${xPos}px`,
+                top: `${yPos}px`,
+              };
+            })()}
           >
             <img
               src={activeService.image}
