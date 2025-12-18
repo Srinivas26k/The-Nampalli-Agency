@@ -10,9 +10,32 @@ const Footer: React.FC = () => {
       <div className="w-full flex justify-between items-start border-b border-muted/10 pb-8">
         <span className="font-serif text-xl md:text-2xl italic text-muted">The Nampalli Agency</span>
         <div className="flex space-x-6">
-           <a href="#" className="text-muted hover:text-offwhite transition-colors"><Twitter size={20} strokeWidth={1} /></a>
-           <a href="#" className="text-muted hover:text-offwhite transition-colors"><Linkedin size={20} strokeWidth={1} /></a>
-           <a href="#" className="text-muted hover:text-offwhite transition-colors"><Github size={20} strokeWidth={1} /></a>
+           <motion.a 
+             href="#" 
+             whileHover={{ scale: 1.2, color: '#f5f5f7' }}
+             transition={{ type: "spring", stiffness: 300 }}
+             className="text-muted"
+           >
+             <Twitter size={20} strokeWidth={1} />
+           </motion.a>
+           
+           <motion.a 
+             href="#" 
+             whileHover={{ scale: 1.2, color: '#f5f5f7' }}
+             transition={{ type: "spring", stiffness: 300 }}
+             className="text-muted"
+           >
+             <Linkedin size={20} strokeWidth={1} />
+           </motion.a>
+           
+           <motion.a 
+             href="#" 
+             whileHover={{ scale: 1.2, color: '#f5f5f7' }}
+             transition={{ type: "spring", stiffness: 300 }}
+             className="text-muted"
+           >
+             <Github size={20} strokeWidth={1} />
+           </motion.a>
         </div>
       </div>
 
@@ -38,8 +61,6 @@ const Footer: React.FC = () => {
           </span>
           <motion.div 
             className="h-[1px] w-0 bg-champagne absolute bottom-4 left-0"
-            whileInView={{ w: "100%" }} // Wait... better to animate on hover? No, initial load is better style
-            // Let's make it expand on hover
             initial={{ width: "0%" }}
             whileHover={{ width: "100%" }}
             transition={{ duration: 0.4 }}

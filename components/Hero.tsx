@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useSpring, useScroll, useTransform } from 'framer-motion';
 
 const Hero: React.FC = () => {
   const containerVariants = {
@@ -24,6 +24,37 @@ const Hero: React.FC = () => {
     },
   };
 
+  // Scroll Parallax Logic
+  const { scrollY } = useScroll();
+  const yHeadline = useTransform(scrollY, [0, 500], [0, 200]);
+  const ySubheadline = useTransform(scrollY, [0, 500], [0, 100]);
+
+  // Magnetic Scroll Logic
+  const ref = useRef<HTMLDivElement>(null);
+  
+  const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
+  const springX = useSpring(0, springConfig);
+  const springY = useSpring(0, springConfig);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = ref.current!.getBoundingClientRect();
+    const centerX = left + width / 2;
+    const centerY = top + height / 2;
+    
+    // Calculate distance from center
+    const x = clientX - centerX;
+    const y = clientY - centerY;
+    
+    springX.set(x * 0.3); // 0.3 factor for subtle attraction
+    springY.set(y * 0.3);
+  };
+
+  const handleMouseLeave = () => {
+    springX.set(0);
+    springY.set(0);
+  };
+
   return (
     <section className="h-screen w-full flex flex-col justify-between px-6 py-8 md:px-12 md:py-12 relative overflow-hidden">
       {/* Top Label */}
@@ -42,6 +73,7 @@ const Hero: React.FC = () => {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
+        style={{ y: yHeadline }}
         className="flex flex-col items-center justify-center w-full z-10"
       >
         {/* Line 1 */}
@@ -66,28 +98,39 @@ const Hero: React.FC = () => {
       </motion.div>
 
       {/* Sub-headline & Scroll Indicator */}
-      <div className="flex flex-col items-center space-y-12">
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.8 }}
-          className="text-muted text-sm md:text-lg font-sans tracking-wide text-center max-w-md"
-        >
-          Merging <span className="text-offwhite">Agentic AI</span> with <span className="text-offwhite">Visceral Design</span>.
-        </motion.p>
-        
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.6 }}
-          transition={{ duration: 1, delay: 2.2 }}
-          className="h-16 w-[1px] bg-muted/30 overflow-hidden relative"
-        >
-          <motion.div 
-            animate={{ y: ["-100%", "100%"] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-            className="absolute top-0 left-0 w-full h-1/2 bg-offwhite"
-          />
+      <div className="flex flex-col items-center space-y-12 pb-8">
+        <motion.div style={{ y: ySubheadline }}>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.8 }}
+            className="text-muted text-sm md:text-lg font-sans tracking-wide text-center max-w-md"
+          >
+            Merging <span className="text-offwhite">Agentic AI</span> with <span className="text-offwhite">Visceral Design</span>.
+          </motion.p>
         </motion.div>
+        
+        {/* Magnetic Area */}
+        <div 
+          ref={ref}
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="p-10 -m-10 cursor-pointer" // Padding creates the "magnetic field" area
+        >
+            <motion.div 
+              style={{ x: springX, y: springY }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.6 }}
+              transition={{ duration: 1, delay: 2.2 }}
+              className="h-16 w-[1px] bg-muted/30 overflow-hidden relative"
+            >
+              <motion.div 
+                animate={{ y: ["-100%", "100%"] }}
+                transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                className="absolute top-0 left-0 w-full h-1/2 bg-offwhite"
+              />
+            </motion.div>
+        </div>
       </div>
     </section>
   );

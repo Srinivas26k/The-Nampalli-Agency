@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ServiceItem } from '../types';
 
@@ -63,16 +63,16 @@ const Services: React.FC = () => {
             key={service.id}
             onMouseEnter={() => setActiveId(service.id)}
             onMouseLeave={() => setActiveId(null)}
-            className="group relative border-t border-muted/20 py-12 md:py-16 transition-all duration-300 hover:bg-white/5"
+            className="group relative border-t border-muted/20 py-12 md:py-16 transition-all duration-500 ease-out hover:bg-white/5"
           >
             <div className="flex flex-col md:flex-row md:items-baseline justify-between z-10 relative">
-              <h3 className="font-serif text-4xl md:text-6xl lg:text-7xl text-offwhite group-hover:italic transition-all duration-300">
-                <span className="text-xl md:text-2xl text-muted font-sans mr-4 md:mr-8 align-top opacity-50 block md:inline mb-2 md:mb-0">
+              <h3 className="font-serif text-4xl md:text-6xl lg:text-7xl text-offwhite transition-all duration-500 ease-out origin-left group-hover:text-champagne group-hover:scale-105 group-hover:italic">
+                <span className="text-xl md:text-2xl text-muted font-sans mr-4 md:mr-8 align-top opacity-50 block md:inline mb-2 md:mb-0 group-hover:text-champagne/70 group-hover:no-underline not-italic">
                   ({service.id})
                 </span>
                 {service.title}
               </h3>
-              <p className="font-sans text-muted mt-4 md:mt-0 md:max-w-xs text-sm md:text-base opacity-70 group-hover:opacity-100 transition-opacity duration-300">
+              <p className="font-sans text-muted mt-4 md:mt-0 md:max-w-xs text-sm md:text-base opacity-60 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                 {service.description}
               </p>
             </div>
@@ -96,9 +96,7 @@ const Services: React.FC = () => {
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
             className="pointer-events-none fixed top-0 left-0 z-20 hidden md:block w-[400px] h-[250px] overflow-hidden rounded-sm shadow-2xl"
             style={{ 
-                // We use fixed positioning but update transform based on relative mouse movement 
-                // However, to make it truly follow the mouse globally, we need client coordinates.
-                // Re-adjusting to fixed viewport coordinates for simplicity in this implementation
+                // Using fixed positioning calculated from mouse relative to container
                 left: 0,
                 top: 0,
                 x: mousePosition.x + (containerRef.current?.getBoundingClientRect().left || 0) + 40,
