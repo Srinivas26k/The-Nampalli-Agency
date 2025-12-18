@@ -1,0 +1,83 @@
+# Robots.txt for The Nampalli Agency
+# Optimized for SEO, AEO (Answer Engine Optimization), and GEO (Generative Engine Optimization)
+
+# Allow all search engines and AI crawlers
+User-agent: *
+Allow: /
+
+# Explicitly allow important AI/LLM crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Traditional search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Social media crawlers for rich previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+# Disallow admin or sensitive paths (add as needed)
+# User-agent: *
+# Disallow: /admin/
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://srinivas-agency.vercel.app/sitemap.xml
+
+# Crawl-delay (optional, only if you experience server load issues)
+# Crawl-delay: 1
+
+# Host preference (helps with www vs non-www)
+Host: https://srinivas-agency.vercel.app/

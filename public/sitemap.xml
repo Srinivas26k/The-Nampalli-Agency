@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://srinivas-agency.vercel.app/</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://srinivas-agency.vercel.app/OG.png</image:loc>
+      <image:title>The Nampalli Agency - AI Solutions</image:title>
+      <image:caption>AI-powered digital transformation and automation services</image:caption>
+    </image:image>
+  </url>
+  
+  <!-- Add more pages as you create them -->
+  <!-- Example:
+  <url>
+    <loc>https://srinivas-agency.vercel.app/services</loc>
+    <lastmod>2024-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  -->
+  
+</urlset>
