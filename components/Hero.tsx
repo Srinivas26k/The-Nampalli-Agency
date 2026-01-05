@@ -31,24 +31,22 @@ const Hero: React.FC = () => {
 
   // Magnetic Scroll Logic
   const ref = useRef<HTMLDivElement>(null);
-
   const springConfig = { damping: 15, stiffness: 150, mass: 0.1 };
   const springX = useSpring(0, springConfig);
   const springY = useSpring(0, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (window.innerWidth < 768) return; // Disable magnetic effect on mobile
+    if (window.innerWidth < 768) return;
 
     const { clientX, clientY } = e;
     const { left, top, width, height } = ref.current!.getBoundingClientRect();
     const centerX = left + width / 2;
     const centerY = top + height / 2;
 
-    // Calculate distance from center
     const x = clientX - centerX;
     const y = clientY - centerY;
 
-    springX.set(x * 0.3); // 0.3 factor for subtle attraction
+    springX.set(x * 0.3);
     springY.set(y * 0.3);
   };
 
@@ -58,16 +56,18 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="min-h-screen w-full flex flex-col justify-between px-4 sm:px-6 py-6 sm:py-8 md:px-12 md:py-12 relative overflow-hidden">
+    <section className="min-h-screen w-full flex flex-col justify-center items-center px-4 sm:px-6 py-12 relative overflow-hidden bg-charcoal">
+
       {/* Top Label */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 1.5 }}
-        className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-0 text-muted text-[10px] sm:text-xs md:text-sm tracking-[0.15em] sm:tracking-[0.2em] font-sans uppercase"
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="absolute top-8 left-0 w-full flex justify-center"
       >
-        <span>Est. 2025 // Hyderabad</span>
-        <span>The Nampalli Agency</span>
+        <span className="text-muted text-[10px] sm:text-xs tracking-[0.2em] font-sans uppercase">
+          Est. 2025 // Hyderabad
+        </span>
       </motion.div>
 
       {/* Main Headline */}
@@ -76,64 +76,78 @@ const Hero: React.FC = () => {
         initial="hidden"
         animate="visible"
         style={{ y: yHeadline }}
-        className="flex flex-col items-center justify-center w-full z-10"
+        className="flex flex-col items-center justify-center w-full z-10 max-w-5xl mx-auto"
       >
-        {/* Line 1 */}
         <div className="overflow-hidden">
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-[16vw] sm:text-[15vw] md:text-[14vw] lg:text-[12vw] xl:text-[10vw] leading-[0.85] text-center font-normal tracking-tight bg-gradient-to-r from-offwhite via-champagne to-offwhite bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient"
+            className="font-serif text-[10vw] sm:text-[8vw] md:text-[6vw] leading-[1.1] text-center font-normal tracking-tight text-offwhite"
           >
-            Digital
+            I Build AI Employees
           </motion.h1>
         </div>
 
-        {/* Line 2 with Italic */}
         <div className="overflow-hidden">
           <motion.h1
             variants={itemVariants}
-            className="font-serif text-[16vw] sm:text-[15vw] md:text-[14vw] lg:text-[12vw] xl:text-[10vw] leading-[0.85] text-center font-light italic tracking-tight bg-gradient-to-r from-champagne via-offwhite to-champagne bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient"
+            className="font-serif text-[10vw] sm:text-[8vw] md:text-[6vw] leading-[1.1] text-center font-light italic tracking-tight text-champagne"
           >
-            Alchemy.
+            That Work 24/7.
           </motion.h1>
         </div>
       </motion.div>
 
-      {/* Sub-headline & Scroll Indicator */}
-      <div className="flex flex-col items-center space-y-8 sm:space-y-12 pb-6 sm:pb-8">
-        <motion.div style={{ y: ySubheadline }}>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.8 }}
-            className="text-muted text-xs sm:text-sm md:text-base lg:text-lg font-sans tracking-wide text-center max-w-xs sm:max-w-md px-4"
-          >
-            Merging <span className="text-offwhite">Agentic AI</span> with <span className="text-offwhite">Visceral Design</span>.
-          </motion.p>
-        </motion.div>
-
-        {/* Magnetic Area */}
-        <div
-          ref={ref}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className="p-8 sm:p-10 -m-8 sm:-m-10 cursor-pointer"
+      {/* Sub-headline */}
+      <motion.div
+        style={{ y: ySubheadline }}
+        className="mt-8 max-w-2xl text-center px-4"
+      >
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+          className="text-muted text-sm sm:text-base md:text-lg font-sans tracking-wide leading-relaxed"
         >
-          <motion.div
-            style={{ x: springX, y: springY }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.6 }}
-            transition={{ duration: 1, delay: 2.2 }}
-            className="h-12 sm:h-16 w-[1px] bg-muted/30 overflow-hidden relative"
+          Automate customer support, lead gen, and workflows. Stop paying for repetitive tasks.
+          <span className="text-offwhite block mt-2">Scale your business without increasing headcount.</span>
+        </motion.p>
+
+        {/* CTAs */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center mt-8 items-center"
+        >
+          {/* Primary CTA - Calendly */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => window.open('https://calendly.com/srinivasvarma764/30min', '_blank')}
+            className="px-8 py-4 bg-champagne text-charcoal font-bold font-sans uppercase tracking-wider text-sm rounded-sm hover:bg-champagne/90 transition-colors w-full sm:w-auto"
           >
-            <motion.div
-              animate={{ y: ["-100%", "100%"] }}
-              transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-              className="absolute top-0 left-0 w-full h-1/2 bg-offwhite"
-            />
-          </motion.div>
-        </div>
+            Book Strategy Call
+          </motion.button>
+
+          {/* Secondary CTA - View Pricing */}
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="px-8 py-4 bg-transparent border border-muted/30 text-offwhite font-medium font-sans uppercase tracking-wider text-sm rounded-sm hover:bg-white/5 transition-colors w-full sm:w-auto"
+          >
+            View Pricing
+          </motion.button>
+        </motion.div>
+      </motion.div>
+
+      {/* Background Abstract Effect */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 pointer-events-none opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-champagne blur-[150px] rounded-full animate-pulse" />
       </div>
+
     </section>
   );
 };

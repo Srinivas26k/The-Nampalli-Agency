@@ -6,31 +6,31 @@ const services: ServiceItem[] = [
   {
     id: '01',
     title: 'AI Agents & Automations',
-    description: '24/7 autonomous systems that handle customer queries, qualify leads, and automate workflows—saving 80+ hours monthly',
+    description: 'Cut support costs by 70%. Autonomous agents that handle queries, qualify leads, and book meetings while you sleep.',
     image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop&q=80'
   },
   {
     id: '02',
-    title: 'Landing Pages & Websites',
-    description: 'High-converting web experiences with minimal backend—optimized for speed, SEO, and client acquisition',
+    title: 'High-Converting Websites',
+    description: 'Stop losing traffic. We build lightning-fast, SEO-optimized sites designed to turn visitors into paying customers.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop&q=80'
   },
   {
     id: '03',
-    title: 'Rapid MVP Prototyping',
-    description: 'Transform your idea into a working prototype in days, not months—validate fast, iterate faster, launch with confidence',
+    title: 'MVP Sprint (48 Hours)',
+    description: 'Validate your startup idea this weekend. We build functional prototypes at breakneck speed so you can pitch investors ASAP.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop&q=80'
   },
   {
     id: '04',
-    title: 'AI Marketing Campaigns',
-    description: 'AI-generated ad copy, campaign strategies, and content that performs—scaling your brand at AI speed',
+    title: 'Automated Outreach Systems',
+    description: 'Fills your pipeline automatically. AI tools that scrape leads, write personalized emails, and book calls.',
     image: 'https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=600&h=400&fit=crop&q=80'
   },
   {
     id: '05',
-    title: 'AI Visual Design',
-    description: 'Product photography, promotional videos, and brand visuals created in hours, not weeks—with AI precision',
+    title: 'Revenue-Focused Design',
+    description: 'Design that sells. Premium visuals that build instant trust and authority with high-ticket clients.',
     image: 'https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=600&h=400&fit=crop&q=80'
   }
 ];

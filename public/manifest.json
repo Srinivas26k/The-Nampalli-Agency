@@ -1,0 +1,21 @@
+{
+    "name": "The Nampalli Agency",
+    "short_name": "Nampalli",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f0f0f",
+    "theme_color": "#0f0f0f",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "/OG.png",
+            "sizes": "1200x630",
+            "type": "image/png"
+        }
+    ]
+}
