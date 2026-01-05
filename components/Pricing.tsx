@@ -13,48 +13,48 @@ interface PricingTier {
 
 const tiers: PricingTier[] = [
     {
-        name: "MVP Sprint",
+        name: "The Prototype",
         price: "$499",
-        description: "Perfect for startups and local businesses needing a quick, high-quality digital presence.",
+        description: "Validate your idea fast. A high-converting landing page or MVP delivered in 48 hours.",
         features: [
             "High-Converting Landing Page",
             "Basic Lead Capture Automation",
             "SEO & Performance Optimization",
             "48-Hour Delivery",
-            "1 Month Support"
+            "Launch Support"
         ],
         isPopular: false,
         cta: "Start Sprint"
     },
     {
-        name: "Growth System",
+        name: "One-Person Enterprise",
         price: "$2,499",
-        description: "Complete AI automation suite for scaling businesses.",
+        description: "Replace a full-time employee. A complete AI system that handles support, sales, and ops.",
         features: [
-            "Everything in MVP Sprint",
+            "Everything in Prototype",
             "Custom AI Customer Support Agent",
             "Email Marketing Automation",
             "Payment Gateway Integration",
             "CRM Integration",
-            "3 Months Support"
+            "Lifetime Code Ownership"
         ],
         isPopular: true,
         cta: "Scale Now"
     },
     {
-        name: "AI COO Retainer",
+        name: "System Guardianship",
         price: "$1,500/mo",
-        description: "Your fractional Chief Automation Officer. Ongoing optimization and new systems.",
+        description: "Insurance for your automation. I keep your agents running as APIs change and businesses evolve.",
         features: [
-            "Weekly Strategy Calls",
-            "Unlimited Workflow Automations",
+            "Weekly Strategy & Optimization",
+            "Unlimited Workflow Tweaks",
             "Priority 24/7 Support",
-            "Competitor Analysis",
-            "Custom Internal Tools",
+            "API Breakage Protection",
+            "New Feature R&D",
             "Cancel Anytime"
         ],
         isPopular: false,
-        cta: "Hire AI COO"
+        cta: "Secure My Systems"
     }
 ];
 

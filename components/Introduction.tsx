@@ -44,13 +44,13 @@ const Introduction: React.FC = () => {
         className="flex flex-col justify-center space-y-8 relative"
       >
         <span className="text-champagne text-xs tracking-[0.2em] font-sans uppercase mb-4 block">
-          The Architect
+          The Anti-Agency Model
         </span>
 
         <motion.div style={{ y: yHeading }}>
-          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.2] text-offwhite font-light">
-            I am Srinivas Nampalli. <br />
-            <span className="italic text-muted opacity-80">Building systems that drive results.</span>
+          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-offwhite font-light">
+            Agencies Rent You Talent. <br />
+            <span className="italic text-champagne">I Build You Assets.</span>
           </h2>
         </motion.div>
 
@@ -58,13 +58,14 @@ const Introduction: React.FC = () => {
 
         <motion.div style={{ y: yText }}>
           <p className="font-sans text-lg md:text-xl text-muted leading-relaxed max-w-xl font-light">
-            I transform businesses with <span className="text-offwhite">AI-powered solutions</span> that work autonomously—
-            from intelligent agents that handle customer queries 24/7, to landing pages that convert visitors into clients,
-            to AI-generated campaigns that scale your brand.
+            Traditional agencies charge for their office snacks and account managers.
+            <span className="text-offwhite"> I charge for Code & Results.</span>
           </p>
           <p className="font-sans text-lg md:text-xl text-muted leading-relaxed max-w-xl font-light mt-6">
-            <span className="text-champagne">Self-taught. Battle-tested. Results-driven.</span>
-            {' '}Every line of code I write serves one purpose: growing your business.
+            I am a <span className="text-champagne">Lean Systems Architect</span>. I don't just "do tasks"—I build autonomous revenue engines that work 24/7. When you hire me, you get the Engineer, the Strategist, and the Builder—all in one.
+          </p>
+          <p className="font-sans text-sm md:text-base text-muted/60 mt-8 italic">
+            * No overhead. No fluff. Just shipping.
           </p>
         </motion.div>
       </motion.div>

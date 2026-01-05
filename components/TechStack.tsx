@@ -5,9 +5,10 @@ const TechBadge: React.FC<{ name: string }> = ({ name }) => (
     <motion.div
         whileHover={{ scale: 1.05, y: -2 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="flex-shrink-0 px-6 py-3 bg-velvet/30 border border-muted/10 rounded-md backdrop-blur-sm hover:border-champagne/30 transition-colors duration-300"
+        className="flex-shrink-0 px-6 py-3 bg-black border border-green-500/30 rounded-sm hover:border-green-500/80 transition-all duration-300 group cursor-default"
     >
-        <span className="font-sans text-sm text-offwhite/70 uppercase tracking-wider whitespace-nowrap">
+        <span className="font-mono text-sm text-green-500/70 group-hover:text-green-400 uppercase tracking-widest whitespace-nowrap flex items-center gap-2">
+            <span className="w-2 h-2 bg-green-500/50 rounded-full animate-pulse"></span>
             {name}
         </span>
     </motion.div>
