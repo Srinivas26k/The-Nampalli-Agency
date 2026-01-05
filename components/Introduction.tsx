@@ -14,7 +14,7 @@ const Introduction: React.FC = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
   return (
-    <section ref={containerRef} className="min-h-[90vh] w-full px-6 py-24 md:px-12 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-16 bg-charcoal overflow-hidden">
+    <section ref={containerRef} className="min-h-screen md:min-h-[90vh] w-full px-6 py-16 md:px-12 md:py-32 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 bg-charcoal overflow-hidden">
 
       {/* Left Column - Profile Image with Hover Effect */}
       <motion.div

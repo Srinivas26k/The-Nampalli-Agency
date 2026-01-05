@@ -16,7 +16,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 const App: React.FC = () => {
   return (
-    <main className="w-full min-h-screen bg-charcoal text-offwhite antialiased selection:bg-champagne selection:text-charcoal relative">
+    <main className="w-full min-h-screen bg-charcoal text-offwhite antialiased selection:bg-champagne selection:text-charcoal relative overflow-x-hidden">
       {/* Visual Effects */}
       <AnimatedBackground />
       <CursorGlow />

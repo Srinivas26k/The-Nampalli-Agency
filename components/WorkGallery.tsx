@@ -53,7 +53,7 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({ projec
     <motion.div
       ref={cardRef}
       style={{ opacity }}
-      className="w-full min-h-[80vh] flex flex-col md:flex-row items-center justify-center py-12 md:py-24 sticky top-0 bg-charcoal"
+      className="w-full min-h-auto md:min-h-[80vh] flex flex-col md:flex-row items-center justify-center py-12 md:py-24 relative md:sticky md:top-0 bg-charcoal border-b md:border-none border-muted/10 last:border-none"
     >
       <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 

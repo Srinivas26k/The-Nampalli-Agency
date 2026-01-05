@@ -100,7 +100,7 @@ const PricingCard: React.FC<{ tier: PricingTier; index: number }> = ({ tier, ind
             className={`
                 relative flex flex-col p-8 rounded-sm
                 ${tier.isPopular
-                    ? 'bg-velvet border-2 border-champagne/40 shadow-2xl shadow-champagne/10 scale-105 z-20'
+                    ? 'bg-velvet border-2 border-champagne/40 shadow-2xl shadow-champagne/10 md:scale-105 z-20'
                     : 'bg-velvet/50 border border-muted/10 hover:border-muted/30 z-10'
                 }
                 transition-all duration-300
